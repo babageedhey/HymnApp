@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine","ejs");
 
 // Connection to the DB
-mongoose.connect("mongodb://localhost/hymndb");
+mongoose.connect("mongodb://<babageedhey>:<nextlevel01>@ds036617.mlab.com:36617/hymndb");
 
 //Hymn Schema
 var hymnSchema = new mongoose.Schema({
