@@ -1,23 +1,37 @@
 
 
-<nav class="navbar navbar-inverse navbar-static-top">
+<nav class="navbar navbar-inverse navbar-fixed-top" id="topnav">
 		<div class="container-fluid">
-			<form class="navbar-form navbar-left" role="search">
+			
 				<div class="navbar-header">
-					<a class="navbar-brand brand" href="/">Everything Hymns</a>
-					<div class="input-group">
-						<input type="text" name="search" class=" search-bar form-control" placeholder="Search">
-						<span class="input-group-addon fa fa-search" id="search-icon"></span>
-				</div>	
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 	data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        			<span class="sr-only">Toggle navigation</span>
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+      			</button>
+      			<a class="navbar-brand brand" href="/">Everything Hymns</a>
+					
 				</div>
 				
-			</form> 
+			
 		
-		<div class="collapse navbar-collapse">
-				<ul class=" nav navbar-nav navbar-right"> 
-					<li><a href="/">Login <i class="fa fa-user-o"></i></a></li>
-					<li><a href="/">Sign up <i class="fa fa-user-circle-o"></i></a></li>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<div class="input-group search-bar navbar-left">
+						<input type="text" name="search" class="form-control" id="search" placeholder="Search Church Hymnal.." onkeyup ="myFunction()">
+						<span class="input-group-addon fa fa-search" id="search-icon"></span>
+					</div>	
+				<ul class="nav navbar-nav navbar-right"> 
+				<%	if (!currentUser) { %>
+						<li><a href="/login">Login <i class="fa fa-user-o"></i></a></li>
+						<li><a href="/register">Sign up <i class="fa fa-user-circle-o"></i></a></li>
+				<%	} else {  %>
+						<li id="username"><a href="#"><%=currentUser.username %></a></li>
+						<li><a href="/logout">Log Out <i class="fa fa-sign-out"></i></a></li>
+				<%	}  %>
+					<li role="seperator" class="divider"></li>
 					<li><a href="/">Contact Us <i class="fa fa-phone"> </i></a></li>
+					<li><a href="/">About <i class="fa fa-info"> </i></a></li>
 				</ul>
 		</div>
 		</div>

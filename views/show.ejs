@@ -12,11 +12,11 @@
 					<li class="list-group-item">
 					<a href="/"><span class="fa fa-home"></span> Home </a>
 					</li>
-					<li class="list-group-item">
-					<a href="the_church_hymnal"> The Church Hymnal</a> 
-					</li>
 					<li class="list-group-item active">
-					<a href="/baptist_hynmal"> Baptist Hymnal</a> 
+					<a href="/the_church_hymnal"> The Church Hymnal</a> 
+					</li>
+					<li class="list-group-item">
+					<a href="/baptist_hymnal"> Baptist Hymnal</a> 
 					</li>
 					<li class="list-group-item">
 						<a href=#> Ancient & Modern</a> 
@@ -25,52 +25,39 @@
 						<a href="/cac_hymnal"> CAC Hymnal</a> 
 					</li>
 					<li class="list-group-item">
-						<a href="/the_hymnbook"> The Hymnbook</a> 
+						<a href="the_hymnbook"> The Hymnbook</a> 
 					</li>
 					<li class="list-group-item">
 						<a href=#> Catholic Hymnal</a> 
 					</li>
 					<li class="list-group-item">
-						<a href="/chant_book"> Chant Book</a>  
+						<a href="chant_book"> Chant Book</a>  
 					</li>
 				</div>
 			</div>
 		</div>
 
+
 		<div class="col-md-6">
 			
-			<div class="thumnail">
-				<h3 class="title-h"> Baptist Hymnal </h3><hr id="hr">
-				<div class="table-responsive">
-					<table class="table table-striped" id="hymn-table">
-						<thead>
-							<tr>
-								<th id="serial-no">No </th>
-								<th id="title"> Title </th>
-								<th id="meter"> Meter No </th>
-								<th id="tune_name"> Tune Name </th>
-							</tr>
-						</thead>
-						<tbody>
+			<div class="thumbnail">
+				<a href="/the_church_hymnal"><span class="fa fa-arrow-left"></span> Back </a>
+				<h3 class="title-h"><%=foundHymn.title %></h3><hr id="hr">	
+							<img class="img-responsive score-img" src="<%=foundHymn.score %>" >
+						
+				<% if (currentUser && currentUser.username === "geedhey") { %>
 
-						<tr>
-						<% hymnData.forEach(function(hymn){ %>
-							<td id="serial-no">  </td>
-							<td id="title">
-								<a href="#"><%= hymn.title %></a>  
-							</td>
-							<td id="meter"><%= hymn.meter %>  </td>
-							<td id="tune_name"><%= hymn.tune_name %> </td>
-						</tr>
-						<%	}); %>
-						</tbody>
-					</table>
-				</div>
-		
-				
+					<a href="/the_church_hymnal/<%=foundHymn._id %>/edit" class="btn btn-primary active" role="button">
+					 Edit Hymn 
+					</a>
+					<form  id="delete-btn" action="/the_church_hymnal/<%=foundHymn._id %>?_method=DELETE" method="POST">
+						<button class="btn btn-default btn-danger"> Delete </button>
+					</form>
+
+				<% } %>
+					
 			</div>
 		</div>
-
 
 		<div class="row">
 			<div class="col-md-3">

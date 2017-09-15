@@ -1,16 +1,16 @@
 <% include layouts/header %>
 
 <% include layouts/navbar %>
-<div class="container-fluid">
+<div class="container-fluid" id="content">
 	
 	<div class="row">
 		<div class="col-md-3">
-			<h3 class="lead">Select Hymn Book</h3>
+			
 			<div>
 				
 				<div class="list-group">
 					<li class="list-group-item">
-					<a href="/"> Home </a>
+					<a href="/"><span class="fa fa-home"></span> Home </a>
 					</li>
 					<li class="list-group-item active">
 					<a href="/the_church_hymnal"> The Church Hymnal</a> 
@@ -38,23 +38,57 @@
 		</div>
 
 		<div class="col-md-6">
-			<h3> The Church Hymnal </h3>
-			<div class="thumnail">
+			
+			<div class="thumbnail">
+			<h3 class="title-h"> The Church Hymnal </h3><hr id="hr">
+			<% if (currentUser && currentUser.username === "geedhey") { %>
+					<a role="button" class="btn btn-primary active" id="add-btn" href="/the_church_hymnal/new">Add New Hymn</a>
+						
+			<% } %>
+			
+			
+			<div class="sort">
+                <label> SORT BY:</label>
+                <select id="sort-by" class="form-control" onchange="sortBy();">
+                    <option value="title">Title</option>
+                    <option value="number">Number</option>
+                    <option value="tune">Tune-Name</option>
+                    <option value="meter">Meter</option>
+                </select>
+            </div>
+				<div class="table-responsive">
+					<table class="table table-striped hymn-table sortable" id="sortable">
+						<thead id="table-head">
+							<tr class="header">
+								<th class="number tb-head" name="number"> No </th>
+								<th class="title tb-head" name="title"> Title </th>
+								<th class="meter tb-head" name="meter"> Meter No </th>
+								<th class="tune tb-head" name="tune"> Tune Name </th>
+							</tr>
+						</thead>
+						<tbody>
+
+						<tr>
+						<% hymnData.forEach(function(hymn){ %>
+							<td class="number"><strong><%= hymn.number %></strong></td>
+							<td class="title">
+								<a href="/the_church_hymnal/<%=hymn._id %>"><%= hymn.title %></a>  
+							</td>
+							<td class="meter"><strong><%= hymn.meter %></strong></td>
+							<td class="tune"><strong><%= hymn.tune_name %></strong></td>
+						</tr>
+						<%	}); %>
+						</tbody>
+					</table>
+				</div>
 
 			</div>
 		</div>
-
-
-
-
-
-
-
-
+		
 
 		<div class="row">
 			<div class="col-md-3">
-				<h3> News Feed </h3>
+				
 				<div class="well"> 
 					<div class="thumbnail">
 						<img class="img-responsive" src="/images/city.jpg" >

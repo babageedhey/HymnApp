@@ -1,22 +1,203 @@
 .brand {
-	margin-top: -10px;
+	margin-top: -3px;
 	padding-right: 2px;
 }
 
 #search-icon {
 	background-color:inherit;
+  margin-left: 0px;
 }
+
+.search-bar {
+  width: 30%;
+  margin-top: 10px;
+}
+.list-group-item  {
+  font-size: 19px;
+  font-weight:300%;
+}
+
+.list-group-item > .active > .list-group-item > .active: focus > .list-group-item > .active: hover{
+  background-color: gray;
+  border-radius: 2px;
+}
+ 
+#content {
+  margin-top: 60px;
+}
+
+body {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: #5a5a5a;
+  font-size: 30rem;
+}
+table {
+    width:auto;/*fixed width table*/
+    height:auto;
+   
+}
+
+table td:first-child {
+    text-align:left; /*Aligning the Numbers to center */
+}
+
+.hymn-table thead tr {
+    display:table-header-group; /*makes the table head sizeable*/
+}
+
+thead th:first-of-type {
+   width:5%;/*Making the number-header column smaller than the other column*/
+   
+}
+
+thead th {
+    
+    background-color:#222;
+    text-align: center;
+    color:#9d9d9d;
+    border:  1px solid ;
+    margin: 5px;
+    padding-left: 10px;
+    
+}
+
+tbody td:first-of-type {
+    width:5%; /*Making the number-body column smaller than the other column*/
+
+}
+
+tbody td {
+
+    width:auto;
+    text-align: center;
+    
+}
+
+tbody {
+    display:block;
+    height:500px;
+    overflow:auto;
+    width:100%;
+}
+.title {
+  width:50%;
+  text-align: left;
+  margin-left: 50px;
+  padding-left: 50px;
+}
+.tune {
+  width:25%;
+  text-align: center;
+  padding-left:1px;
+}
+.tb-head {
+  text-align: center;
+  padding-right: 300px;
+}
+
+.sort {
+    display: inline;
+    font-size: 18px;
+    padding: 1px;
+    
+
+}
+
+#sort-by {
+display: inline;
+width:30%;
+margin-bottom: 5px;
+
+}
+
+.title-h {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  padding-bottom: -5px;
+}
+
+#hr{
+  margin-bottom: 5px;
+  margin-top: 6px;
+}
+
+#delete-btn {
+  display: inline;
+}
+
+.navbar-static-top{
+  margin-top: -30px;
+}
+.footer {
+  position: relative;
+  width: 100%;
+  margin-bottom: -30px;
+  box-sizing: border-box;
+  background-color: #222;
+}
+#username{
+  color:#9d9d9d;
+
+}
+footer  h5{
+  color:#9d9d9d;
+}
+footer h4 {
+  color:#9d9d9d;
+}
+
+.score-img{ 
+  margin-bottom:50px;
+  margin-left: auto;
+ }
+
+#add-btn {
+  margin-bottom: 3px;
+ }
+
+#form {
+  margin-top: 20px;
+}
+#form label {
+  margin-right: 25px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+ }
+#form input {
+  margin-left: 10px;
+  margin-bottom: 10px;
+ }
+#form button {
+  margin-left: 120px;
+ }
+#signUpform {
+  margin-top: 20px;
+}
+#signUpform .inputReg{
+  padding-right: 50px;
+}
+#signUpform .input-reg{
+  margin-left: 57px;
+}
+#signUpform button {
+  margin-left: 132px;
+  margin-top: 10px;
+}
+ 
 
 /* Makes images fully responsive */
 
 .img-responsive,
-.thumbnail > img,
-.thumbnail a > img,
+.thumbnail > img ,
+.thumbnail a > img >
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 /* ------------------- Carousel Styling ------------------- */
