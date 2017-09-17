@@ -138,14 +138,7 @@ app.delete("/the_church_hymnal/:id", isLoggedIn, function(req, res){
 })
 //Index Route for Baptist hymnal page
 app.get("/baptist_hymnal", function(req,res){
-	//Get all Hymn data from the DB
-	TheChurchHymnal.find({}, function(err, allHymns){
-		if (err) {
-			console.log(err)
-		} else {
-			res.render("baptist_hymnal", {hymnData: allHymns});
-		}
-	})
+	res.render("baptist_hymnal");
 	
 })
 
