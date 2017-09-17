@@ -30,7 +30,7 @@ app.set("view engine", "ejs");
 mongoose.Promise = require("bluebird");
 mongoose.Promise = global.Promise;
 // Connection to the DB cloud
-mongoose.connect("mongodb://<babageedhey>:<nextlevel01>@ds036617.mlab.com:36617/hymndb");
+mongoose.connect("mongodb://<babageedhey>:<nextlevel01>@ds036617.mlab.com:36617/hymndb", {useMongoClient: true});
 
 //mongoose.connect("mongodb://localhost/hymndb", { useMongoClient: true});
 
