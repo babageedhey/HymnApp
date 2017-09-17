@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverRide("_method"));
 app.set("view engine", "ejs");
 
-
+console.log(process.env.DATABASEURL);
 
 
 
