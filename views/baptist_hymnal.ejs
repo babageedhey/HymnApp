@@ -41,32 +41,7 @@
 			
 			<div class="thumnail">
 				<h3 class="title-h"> Baptist Hymnal </h3><hr id="hr">
-				<div class="table-responsive">
-					<table class="table table-striped" id="hymn-table">
-						<thead>
-							<tr>
-								<th id="serial-no">No </th>
-								<th id="title"> Title </th>
-								<th id="meter"> Meter No </th>
-								<th id="tune_name"> Tune Name </th>
-							</tr>
-						</thead>
-						<tbody>
-
-						<tr>
-						<% hymnData.forEach(function(hymn){ %>
-							<td id="serial-no">  </td>
-							<td id="title">
-								<a href="#"><%= hymn.title %></a>  
-							</td>
-							<td id="meter"><%= hymn.meter %>  </td>
-							<td id="tune_name"><%= hymn.tune_name %> </td>
-						</tr>
-						<%	}); %>
-						</tbody>
-					</table>
-				</div>
-		
+					<img class="img-responsive" src="/images/coming-soon" >
 				
 			</div>
 		</div>
