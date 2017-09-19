@@ -1,3 +1,36 @@
+//date function
+var     	today    = new Date(),
+			date     = today.getDate(),
+        	day      = today.getDay(),
+        	month    = today.getMonth(),
+        	year     = today.getFullYear(),
+        	min      = addZero(today.getMinutes()),
+        	hour     = today.getHours();
+function addZero(i) {
+	if(i<10) {
+		i = "0" + i;
+	}
+	return i;
+}
+function getDayName(dateStr, locale) {
+        	
+    return today.toLocaleDateString(locale, {weekday: "long"});
+}
+	
+function getMonthName(dateStr, locale) {
+	return today.toLocaleDateString(locale, {month: "long"});
+}
+
+	var dateStr = (day +"/"+ (month+1) +"/"+ date +"/"+ year).toString();
+	var dayName = getDayName(dateStr, "en-US");
+	var monthName = getMonthName(dateStr, "en-US");  
+    var    fullDate = (dayName +", "+ monthName +" "+ date +", "+ year +" "+hour +":"+ min)
+	document.getElementById("date").innerHTML = fullDate;
+
+
+
+
+
 //Function to confirm password match
 function validatePwd(password1,password2){
 	if (password1.value !== password2.value){
