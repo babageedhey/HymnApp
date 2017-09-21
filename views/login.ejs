@@ -1,44 +1,37 @@
+<div class="form-page">
 <% include layouts/header %>
 
 <% include layouts/navbar %>
 
-<div class="container-fluid" id="content">
+<div class="container" id="content">
 	<div class="row">
-		<div class="col-md-9">
-		<fieldset id="form">
-			<legend> Login </legend>
-			<form action="/login" method="POST">
-			<label> Username: </label>
-			<input type="text" name="username" placeholder="Username" required/><br>
-			<label> Password: </label>
-			<input type="password" name="password" placeholder="Password" required /><br>
-			<button class="btn btn-primary"> Submit </button>
-			</form>
+		<div class="forms">
+		
+		<fieldset id="signUpform">
+			<legend> Login</legend>
+				<form action="/login" method="POST">
+					<div class="form-group"><label> Username: 
+						<input type="text" name="username" placeholder="" class="form-control" required/>
+					</label></div>
+					<div class="form-group"><label> Password: 
+						<input type="password" name="password" id="password" placeholder="password" class="form-control" required  />
+					</label></div>
+					<div class="form-group">				
+						<button class="btn btn-primary" id="submit-btn"> Submit </button>
+					</div>
+				</form>
 		</fieldset>
+		<hr class="divider">
+		<p> Don't have an Account? <a href="/register">Sign Up</a></p>
 		</div>
-	
+		
+		
 
-	<div class="row">
-			<div class="col-md-3">
-				<h3> News Feed </h3>
-				<div class="well"> 
-					<div class="thumbnail">
-						<img class="img-responsive" src="/images/city.jpg" >
-					</div>
-					<div class="thumbnail">
-						<img class="img-responsive" src="/images/dPrayer.jpg" >
-					</div>
-					<div class="thumbnail">
-						<img class="img-responsive" src="/images/grace.jpg" >
-					</div>
-					<div class="thumbnail">
-						<img class="img-responsive" src="/images/rest.jpg" >
-					</div>
-				</div>
-			</div>
-	</div>
-	</div>
+	</div>	
 </div>
-<footer>
-	<% include layouts/footer %>
-</footer>
+<% include layouts/footer %>
+</div>
+
+
+
+

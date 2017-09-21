@@ -32,14 +32,17 @@ function getMonthName(dateStr, locale) {
 
 
 //Function to confirm password match
-function validatePwd(password1,password2){
-	if (password1.value !== password2.value){
-		password2.setCustomValidity("Password does not match");
+var password = document.getElementById('password');
+var confirm_password = document.getElementById('confirm_password');
+function validatePwd(){
+	console.log(password, confirm_password);
+	if (password.value !== confirm_password.value){
+		confirm_password.setCustomValidity("Password does not match");
 	} else {
-		password2.setCustomValidity("");
+		confirm_password.setCustomValidity("");
 	}
 }
-
+confirm_password.onkeyup = validatePwd;
 
 
 //Search function to table

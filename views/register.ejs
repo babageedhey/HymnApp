@@ -1,54 +1,33 @@
+<div class="form-page">
 <% include layouts/header %>
 
 <% include layouts/navbar %>
 
-<div class="container-fluid" id="content">
+<div class="container" id="content">
 	<div class="row">
-		<div class="col-md-9">
+		
+		<div class="forms">
+		
 		<fieldset id="signUpform">
-			<legend> Sign Up Here! </legend>
+			<legend> Sign Up</legend>
 				<form action="/register" method="POST">
-				<div class="inputReg"><label>First Name: 
-				<input type="text" name="first_name" placeholder="" class="input-reg" />
-				</label></div><br>
-				<div class="inputReg"><label> Last Name: 
-				<input type="text" name="last_name" placeholder="" class="input-reg" />
-				</label></div><br>
-				<div class="inputReg"><label> Username: 
-				<input type="text" name="username" placeholder="" class="input-reg" required/>
-				</label></div><br>
-				<div class="inputReg"><label> Password: 
-				<input type="password" name="password" id="password1" placeholder="" class="input-reg" required />
-				</label></div><br>
-				
-				<button class="btn btn-primary"> Submit </button>
+				<div class="form-group"><label> Username: 
+				<input type="text" name="username" placeholder="" class="form-control" required/>
+				</label></div>
+				<div class="form-group"><label> Password: 
+				<input type="password" name="password" id="password" placeholder="******" class="form-control" required  />
+				</label></div>
+				<div class="form-group"><label>Confirm Password: 
+				<input type="password" name="confirm_password" id="confirm_password" placeholder="******" class="form-control" required  />
+				</label></div>
+				<div class="form-group">				
+				<button class="btn btn-primary" id="submit-btn"> Submit </button>
+				</div>
 				</form>
 		</fieldset>
-	</div>	
 	
-
-	<div class="row">
-			<div class="col-md-3">
-				<h3> News Feed </h3>
-				<div class="well"> 
-					<div class="thumbnail">
-						<img class="img-responsive" src="/images/city.jpg" >
-					</div>
-					<div class="thumbnail">
-						<img class="img-responsive" src="/images/dPrayer.jpg" >
-					</div>
-					<div class="thumbnail">
-						<img class="img-responsive" src="/images/grace.jpg" >
-					</div>
-					<div class="thumbnail">
-						<img class="img-responsive" src="/images/rest.jpg" >
-					</div>
-				</div>
-			</div>
-	</div>
-	</div>
-
+		</div>
+	</div>	
 </div>
-<footer>
-	<% include layouts/footer %>
-</footer>
+<% include layouts/footer %>
+</div>

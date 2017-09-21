@@ -3,6 +3,10 @@
 	padding-right: 2px;
 }
 
+#username{
+  color:#9d9d9d;
+}
+
 #search-icon {
 	background-color:inherit;
   margin-left: 0px;
@@ -19,6 +23,14 @@
 .date {
   display: inline-block;
     margin-top: 5px;
+}
+.flash-message {
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+#content {
+  margin-top: 0px;
+  margin-bottom: 60px;
 }
 .list-group-item  {
   font-size: 19px;
@@ -40,6 +52,8 @@ body {
   padding-bottom: 3rem;
   color: #5a5a5a;
   font-size: 30rem;
+  height:100%;
+  position: relative;
 }
 table {
     width:auto;/*fixed width table*/
@@ -139,17 +153,19 @@ margin-bottom: 5px;
 .navbar-static-top{
   margin-top: -30px;
 }
-.footer {
+
+.form-page{
+  min-height: 100%;
   position: relative;
+}
+.footer {
+  position: absolute;
   width: 100%;
-  margin-bottom: -30px;
-  box-sizing: border-box;
+  bottom: 0;
+  height:50px;
   background-color: #222;
 }
-#username{
-  color:#9d9d9d;
 
-}
 footer  h5{
   color:#9d9d9d;
 }
@@ -165,36 +181,19 @@ footer h4 {
 #add-btn {
   margin-bottom: 3px;
  }
+.form-border {
+  border: 1px solid #9d9d9d;
+  padding:20px 80px 40px 20px;
+  padding-right: 120px;
+}
 
-#form {
-  margin-top: 20px;
+.forms {
+  width: 35%;
+  margin: 0 auto;
+} 
+.forms input {
+  min-width: 150%;
 }
-#form label {
-  margin-right: 25px;
-  margin-bottom: 10px;
-  margin-left: 10px;
- }
-#form input {
-  margin-left: 10px;
-  margin-bottom: 10px;
- }
-#form button {
-  margin-left: 120px;
- }
-#signUpform {
-  margin-top: 20px;
-}
-#signUpform .inputReg{
-  padding-right: 50px;
-}
-#signUpform .input-reg{
-  margin-left: 57px;
-}
-#signUpform button {
-  margin-left: 132px;
-  margin-top: 10px;
-}
- 
 
 /* Makes images fully responsive */
 
