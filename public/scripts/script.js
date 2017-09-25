@@ -5,7 +5,7 @@ var     	today    = new Date(),
         	month    = today.getMonth(),
         	year     = today.getFullYear(),
         	min      = addZero(today.getMinutes()),
-        	hour     = today.getHours();
+        	hour     = addZero(today.getHours());
 function addZero(i) {
 	if(i<10) {
 		i = "0" + i;
