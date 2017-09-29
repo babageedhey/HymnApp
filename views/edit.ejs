@@ -45,31 +45,37 @@
 			<legend class="title-h"> Edit <%= hymn.title %> </legend><hr id="hr">
 				<form action="/the_church_hymnal/<%=hymn._id %>?_method=PUT" method="POST" role="form">
 
-					<div class="inputReg">
+					<div class="inputReg form-group">
 						<label> Number: 
-							<input type="text" name="hymn[number]" value="<%= hymn.number %>" class="input-reg">
+							<input type="text" name="hymn[number]" value="<%= hymn.number %>" class="input-reg form-control">
 						</label>
 					</div>
-					<div class="inputReg">
+					<div class="inputReg form-group">
 						<label> Title: 
-							<input type="text" name="hymn[title]" value="<%= hymn.title %>" class="input-reg">
+							<input type="text" name="hymn[title]" value="<%= hymn.title %>" class="input-reg form-control">
 						</label>
 					</div>
-					<div class="inputReg">
+					<div class="inputReg form-group">
 						<label> Meter No: 
-							<input type="text" name="hymn[meter]" value="<%= hymn.meter %>" class="input-reg">
+							<input type="text" name="hymn[meter]" value="<%= hymn.meter %>" class="input-reg form-control">
 						</label>
 					</div>
-					<div class="inputReg">
+					<div class="inputReg form-group">
 						<label> Tune-Name: 
-							<input type="text" name="hymn[tune_name]" value="<%= hymn.tune_name %>" class="input-reg">
+							<input type="text" name="hymn[tune_name]" value="<%= hymn.tune_name %>" class="input-reg form-control">
 						</label>
 					</div>
-					<div class="inputReg">
+					<div class="inputReg form-group">
 						<label> Score: 
-							<input type="text" name="hymn[score]" value="<%= hymn.score %>" class="input-reg">
+							<input type="text" name="hymn[score]" value="<%= hymn.score %>" class="input-reg form-control">
 						</label>
 					</div>
+					<div class="inputReg form-group">
+						<label> Hymn Story: 
+							<textarea type="text" name="hymn[caption]" value="<%= hymn.caption %>" class="input-reg form-control" placeholder="<%= hymn.caption %>"></textarea>
+						</label>
+					</div>
+
 					<button type="submit" class="btn btn-primary"> Submit </button>
 				</form>
 			</fieldset>
@@ -81,16 +87,16 @@
 				
 				<div class="well"> 
 					<div class="thumbnail">
-						<img class="img-responsive" src="/images/trebleClef.png" >
+						<img class="img-responsive" src="/images/FeaturedHymns/All-hail.png" >
 					</div>
 					<div class="thumbnail">
-						<img class="img-responsive" src="/images/tenorClef.jpg" >
+						<img class="img-responsive" src="/images/FeaturedHymns/Safe-in-the-arms.png" >
 					</div>
 					<div class="thumbnail">
-						<img class="img-responsive" src="/images/quaver.jpg" >
+						<img class="img-responsive" src="/images/FeaturedHymns/Jesus-lover.png" >
 					</div>
 					<div class="thumbnail">
-						<img class="img-responsive" src="/images/rest.jpg" >
+						<img class="img-responsive" src="/images/FeaturedHymns/Abide-with-me.png" >
 					</div>
 				</div>
 			</div>

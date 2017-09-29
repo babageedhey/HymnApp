@@ -7,6 +7,7 @@ var hymnSchema = new mongoose.Schema({
 	title: String,
 	score: String,
 	meter: String,
+	caption: String,
 	author: {
 		id: {
 			type: mongoose.Schema.Types.ObjectId,

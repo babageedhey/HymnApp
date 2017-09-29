@@ -32,9 +32,9 @@ console.log(process.env.DATABASEURL);
 mongoose.Promise = require("bluebird");
 mongoose.Promise = global.Promise;
 // Connection to the DB cloud
-mongoose.connect("mongodb://babageedhey:nextlevel01@ds036617.mlab.com:36617/hymndb", {useMongoClient: true});
+//mongoose.connect("mongodb://babageedhey:nextlevel01@ds036617.mlab.com:36617/hymndb", {useMongoClient: true});
 
-//mongoose.connect("mongodb://localhost/hymndb", { useMongoClient: true});
+mongoose.connect("mongodb://localhost/hymndb", {useMongoClient: true});
 
 
 
@@ -49,6 +49,18 @@ app.use(passport.session());
 passport.use(new passportLocal(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+//Function to verify user login
+function isLoggedIn(req, res, next){
+	if (req.isAuthenticated()){
+		return next();
+		
+	} else {
+		req.flash("error", "Username or Password Incorrect!");
+		res.redirect("/login");
+	}
+	
+}
 
 //Middlewear for login logic
 app.use(function(req, res, next){
@@ -76,13 +88,13 @@ app.get("/the_church_hymnal", function(req,res){
 	})
 })
 
-//New -- Route form for new hymns
+//New -- Route to add new hymn
 app.get("/the_church_hymnal/new",isLoggedIn, function(req, res){
 	res.render("new");
 })
 
-//Create --Route to Submit form to
-app.post("/the_church_hymnal", isLoggedIn, function(req, res){
+//Create --Route to Submit new Hymn to DB
+app.post("/the_church_hymnal",isLoggedIn, function(req, res){
 	//create new Hymn
 TheChurchHymnal.create(req.body.hymn, function(err, newHymn){
 		if (err){
@@ -182,18 +194,7 @@ app.get("/logout", function(req, res){
 	res.redirect("/");	
 })
 
-//Function to verify user login
-function isLoggedIn(req, res, next){
-	if (req.isAuthenticated()){
-		req.flash("success", "Welcome Back " + user.username );
-		return next();
-		
-	} else {
-		req.flash("error", "Username or Password Incorrect!");
-		res.redirect("/login");
-	}
-	
-}
+
 
 //Server listening for request to start server.
 app.listen(app.get ("port"), function(){
