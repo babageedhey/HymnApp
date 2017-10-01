@@ -7,7 +7,9 @@
 }
 
 * {
-  font-family: 'Tangerine';
+  font-family: 'Berkshire Swash', cursive;
+  font-size: 55px;
+  text-shadow: 2px 2px 2px #aaa;
 }
 
 .title-h {
@@ -70,7 +72,7 @@
   color:#8a6d3b;
 }
 body {
-  font-family: 'Tangerine', serif;
+  font-family: 'Berkshire Swash', cursive;
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #5a5a5a;
