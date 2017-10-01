@@ -1,11 +1,11 @@
 @font-face {
   font-family: "blkchcry";
-  src:url(blkchcry.ttf);
+  src:url('blkchcry.ttf');
   font-weight: bold;
 }
 
 * {
-  src: url(blkchcry.ttf);
+  src: url('blkchcry.ttf');
   font-family: "blkchcry";
 }
 
