@@ -3,7 +3,7 @@
 
 * {
   font-family: 'Berkshire Swash', cursive;
-  font-size: 48px;
+  
   
 }
 
@@ -68,7 +68,7 @@
 }
 body {
   font-family: 'Berkshire Swash', cursive;
-  text-shadow: 2px 2px 2px #aaa;
+  text-shadow: 0.5px 0.5px 0.5px #aaa;
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #5a5a5a;
