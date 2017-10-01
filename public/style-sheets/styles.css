@@ -1,15 +1,10 @@
 
 
-@font-face {
-  font-family:"blkfont";
-  src:url("blkchcry.ttf"),
-  url('blkchcry.ttf') format('truetype');
-}
 
 * {
   font-family: 'Berkshire Swash', cursive;
-  font-size: 55px;
-  text-shadow: 2px 2px 2px #aaa;
+  font-size: 48px;
+  
 }
 
 .title-h {
@@ -73,6 +68,7 @@
 }
 body {
   font-family: 'Berkshire Swash', cursive;
+  text-shadow: 2px 2px 2px #aaa;
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #5a5a5a;
