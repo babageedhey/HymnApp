@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "blkchcry";
+  src:url(blkchcry.ttf);
+  font-weight: bold;
+}
+
+* {
+  src: url(blkchcry.ttf);
+  font-family: "blkchcry";
+}
+
+.title-h {
+  color: coral;
+  font-weight: bold;
+}
+
 .brand {
 	margin-top: -3px;
 	padding-right: 2px;
@@ -18,11 +34,13 @@
 }
 
 #date {
-  color:#9d9d9d;
+  color:#8a6d3b;
+  font-weight: bold;
 }
 .date {
   display: inline-block;
     margin-top: 5px;
+
 }
 .flash-message {
   margin-top: 30px;
@@ -45,22 +63,30 @@
 #content {
   margin-top: 60px;
 }
-
+.sortby {
+  font-family: "Trebuchet MS";
+  font-size: large;
+  color:#8a6d3b;
+}
 body {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-family: "blkchcry";
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #5a5a5a;
   font-size: 30rem;
   height:100%;
   position: relative;
+  background-color: #fcf8e3;
 }
 table {
     width:auto;/*fixed width table*/
     height:auto;
-   
+    border-collapse: collapse;
+    empty-cells: show;  
 }
-
+.table-responsive {
+  max-width: auto;
+}
 table td:first-child {
     text-align:left; /*Aligning the Numbers to center */
 }
@@ -70,7 +96,7 @@ table td:first-child {
 }
 
 thead th:first-of-type {
-   width:5%;/*Making the number-header column smaller than the other column*/
+   width:2%;/*Making the number-header column smaller than the other column*/
    
 }
 
@@ -82,19 +108,20 @@ thead th {
     border:  1px solid ;
     margin: 5px;
     padding-left: 10px;
+
     
 }
 
 tbody td:first-of-type {
     width:5%; /*Making the number-body column smaller than the other column*/
-
+   
 }
 
 tbody td {
 
     width:auto;
     text-align: center;
-    
+       
 }
 
 tbody {
@@ -102,12 +129,26 @@ tbody {
     height:500px;
     overflow:auto;
     width:100%;
+
+    
+}
+td:first-child + td{
+  width:55%;
+}
+td:first-child + td + td{
+  width:20%;
 }
 .title {
-  width:50%;
+  width:30%;
   text-align: left;
   margin-left: 50px;
   padding-left: 50px;
+}
+.meter {
+  width:20%;
+  text-align: center;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 .tune {
   width:25%;
@@ -123,7 +164,8 @@ tbody {
     display: inline;
     font-size: 18px;
     padding: 1px;
-    
+    font-weight: bold;
+    color:#9d9d9d;  
 
 }
 
@@ -166,13 +208,24 @@ margin-bottom: 5px;
   background-color: #222;
   margin-top: 20px;
   margin-bottom: -95px;
+  font-family: "Trebuchet MS";
+  font-weight: bold;
+}
+
+#topnav a {
+  font-family: "Trebuchet MS";
+  font-weight: bold;
 }
 
 footer  h5{
   color:#9d9d9d;
+  font-family: "Trebuchet MS";
+  font-weight: bold;
 }
 footer h4 {
   color:#9d9d9d;
+  font-family: "Trebuchet MS";
+  font-weight: bold;
 }
 
 .score-img{ 

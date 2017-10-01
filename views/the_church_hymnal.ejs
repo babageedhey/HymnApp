@@ -48,7 +48,7 @@
 			
 			
 			<div class="sort">
-                <label> SORT BY:</label>
+                <label class="sortby"> SORT BY:</label>
                 <select id="sort-by" class="form-control" onchange="sortBy();">
                 	<option value="default"></option>
                     <option value="title">Title</option>
@@ -60,23 +60,23 @@
 				<div class="table-responsive">
 					<table class="table table-striped hymn-table sortable" id="sortable">
 						<thead id="table-head">
-							<tr class="header">
-								<th class="number tb-head" name="number"> No </th>
-								<th class="title tb-head" name="title"> Title </th>
-								<th class="meter tb-head" name="meter"> Meter No </th>
-								<th class="tune tb-head" name="tune"> Tune Name </th>
+							<tr style="font-size: 18px" class="header">
+								<th  class="number tb-head" name="number"> No </th>
+								<th  class="title tb-head" name="title"> Title </th>
+								<th  class="meter tb-head" name="meter"> Meter No </th>
+								<th  class="tune tb-head" name="tune"> Tune Name </th>
 							</tr>
 						</thead>
 						<tbody>
 
 						<tr>
 						<% hymnData.forEach(function(hymn){ %>
-							<td class="number"><strong><%= hymn.number %></strong></td>
-							<td class="title">
-								<a href="/the_church_hymnal/<%=hymn._id %>"><%= hymn.title %></a>  
+							<td  class="number"><strong style="font-family:Georgia;"><%= hymn.number %></strong></td>
+							<td  class="title">
+								<a href="/the_church_hymnal/<%=hymn._id %>" style="font-family:Georgia;"><%= hymn.title %></a>  
 							</td>
-							<td class="meter"><strong><%= hymn.meter %></strong></td>
-							<td class="tune"><strong><%= hymn.tune_name %></strong></td>
+							<td  class="meter"><strong style="font-family:Georgia;"><%= hymn.meter %></strong></td>
+							<td  class="tune"><strong style="font-family:Georgia;"><%= hymn.tune_name %></strong></td>
 						</tr>
 						<%	}); %>
 						</tbody>
