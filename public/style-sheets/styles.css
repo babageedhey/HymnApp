@@ -2,12 +2,14 @@
 
 @font-face {
   font-family:"blkfont";
-  src:url("./blkchcry.ttf");
+  src:url("/style-sheets/blkchcry.ttf"),
+  url('blkchcry.ttf') format('truetype');
 }
 
 * {
   font-family: "blkfont";
-  src: url('./blkchcry.ttf');
+  src: url('/style-sheets/blkchcry.ttf'),
+  url('blkchcry.ttf') format('truetype');
 }
 
 .title-h {
