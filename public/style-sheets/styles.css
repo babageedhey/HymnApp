@@ -7,9 +7,7 @@
 }
 
 * {
-  font-family: "blkfont";
-  src: url('blkchcry.ttf'),
-  url('blkchcry.ttf') format('truetype');
+  font-family: 'Tangerine';
 }
 
 .title-h {
@@ -73,7 +71,6 @@
 }
 body {
   font-family: 'Tangerine', serif;
-  
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #5a5a5a;
