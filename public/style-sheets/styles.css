@@ -1,12 +1,13 @@
+
+
 @font-face {
-  font-family: "blkchcry";
-  src:url('blkchcry.ttf');
-  font-weight: bold;
+  font-family:"blkfont";
+  src:url("./blkchcry.ttf");
 }
 
 * {
-  src: url('blkchcry.ttf');
-  font-family: "blkchcry";
+  font-family: "blkfont";
+  src: url('./blkchcry.ttf');
 }
 
 .title-h {
@@ -69,7 +70,7 @@
   color:#8a6d3b;
 }
 body {
-  font-family: "blkchcry";
+  font-family: "blkfont";
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #5a5a5a;
