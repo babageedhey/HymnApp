@@ -2,13 +2,13 @@
 
 @font-face {
   font-family:"blkfont";
-  src:url("/style-sheets/blkchcry.ttf"),
+  src:url("blkchcry.ttf"),
   url('blkchcry.ttf') format('truetype');
 }
 
 * {
   font-family: "blkfont";
-  src: url('/style-sheets/blkchcry.ttf'),
+  src: url('blkchcry.ttf'),
   url('blkchcry.ttf') format('truetype');
 }
 
