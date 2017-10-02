@@ -1,6 +1,4 @@
 
-
-
 * {
   font-family: 'Berkshire Swash', cursive;
   
@@ -68,7 +66,7 @@
 }
 body {
   font-family: 'Berkshire Swash', cursive;
-  text-shadow: 0.5px 0.5px 0.5px #aaa;
+  text-shadow: 0.2px 0.2px 0.2px #aaa;
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #5a5a5a;
@@ -95,7 +93,7 @@ table td:first-child {
 }
 
 thead th:first-of-type {
-   width:2%;/*Making the number-header column smaller than the other column*/
+   width:1%;/*Making the number-header column smaller than the other column*/
    
 }
 
