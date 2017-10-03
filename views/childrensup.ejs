@@ -11,14 +11,16 @@
 				<div class="list-group">
 					<li class="list-group-item">
 					<a href="/"><span class="fa fa-home"></span> Home </a>
+					</li>
 					<li class="list-group-item active">
 					 <div class="dropdown">
-                  	<button class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="padding-left:1px;"><span class="fa fa-list-ul"></span>
+                  	<button class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                  	style="padding-left:18px;"><span class="fa fa-list-ul"></span>
                   	<a href="/the_church_hymnal" style="font-size:18px;"> The Church Hymnal</a>
                   	</button>
                   	<ul class="dropdown-menu">
-                    	<li class="active"><a href="/the_church_hymnal">Main Book</a></li>
-                    	<li><a href="/childrensup">Children Supplement</a></li>
+                    	<li><a href="/the_church_hymnal">Main Book</a></li>
+                    	<li class="active"><a href="/childrensup">Children Supplement</a></li>
                   	</ul>
                 	</div></li>
 
@@ -47,9 +49,9 @@
 		<div class="col-md-6">
 			
 			<div class="thumbnail">
-			<h3 class="title-h"> The Church Hymnal </h3><hr id="hr">
+			<h3 class="title-h"> Children Supplement </h3><hr id="hr">
 			<% if (currentUser && currentUser.username === "geedhey") { %>
-					<a role="button" class="btn btn-primary active" id="add-btn" href="/the_church_hymnal/new">Add New Hymn</a>
+					<a role="button" class="btn btn-primary active" id="add-btn" href="/childrensup/new">Add New Hymn</a>
 						
 			<% } %>
 			
@@ -79,10 +81,10 @@
 						<tr>
 						<% hymnData.forEach(function(hymn){ %>
 							<td  class="number"><strong style="font-family:Georgia;"><%= hymn.number %></strong></td>
-							<td  class="title">
-								<a href="/the_church_hymnal/<%=hymn._id %>" style="font-family:Georgia;"><%= hymn.title %></a>  
+							<td  class="title" style="width:55%">
+								<a href="/childrensup/<%=hymn._id %>" style="font-family:Georgia;"><%= hymn.title %></a>  
 							</td>
-							<td  class="meter"><strong style="font-family:Georgia;"><%= hymn.meter %></strong></td>
+							<td  class="meter"><strong style="font-family:Georgia;width:20%;"><%= hymn.meter %></strong></td>
 							<td  class="tune"><strong style="font-family:Georgia;"><%= hymn.tune_name %></strong></td>
 						</tr>
 						<%	}); %>

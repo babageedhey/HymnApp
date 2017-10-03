@@ -6,6 +6,7 @@ var 			express 				= require("express"),
 				flash					= require("connect-flash"),
 				seedDB					= require("./seed"),
 				TheChurchHymnal 		= require("./models/hymns"),
+				ChildrenSupplement		= require("./models/childsup"),
 				User					= require("./models/user"),
 				methodOverRide			= require("method-override"),
 				
@@ -88,10 +89,27 @@ app.get("/the_church_hymnal", function(req,res){
 	})
 })
 
+//Index Route for Children Supplement Hymn
+app.get("/childrensup", function(req,res){
+	//Get all hymns from the children supplement book
+	ChildrenSupplement.find({}, function(err, allHymns){
+		if (err) {
+			req.flash("error", "Oops!!!... Hymns not found");
+		}else {
+			res.render("childrensup", {hymnData: allHymns})
+		}
+	})
+})
+
 //New -- Route to add new hymn
 app.get("/the_church_hymnal/new",isLoggedIn, function(req, res){
 	res.render("new");
 })
+// New -- ROute to add new Hymns to the children supplement book
+app.get("/childrensup/new", isLoggedIn, function(req, res){
+	res.render("newcs");
+})
+
 
 //Create --Route to Submit new Hymn to DB
 app.post("/the_church_hymnal",isLoggedIn, function(req, res){
@@ -104,6 +122,17 @@ TheChurchHymnal.create(req.body.hymn, function(err, newHymn){
 		} else {
 			newHymn.save();
 			res.redirect("/the_church_hymnal");
+		}
+	})
+})
+//Create -- Route to Submit the new children supplement book to
+app.post("/childrensup", isLoggedIn, function(req, res){
+	ChildrenSupplement.create(req.body.hymn, function(err, newHymn){
+		if (err){
+			res.render("newcs");
+		} else {
+			newHymn.save();
+			res.redirect("/childrensup");
 		}
 	})
 })
@@ -120,14 +149,35 @@ app.get("/the_church_hymnal/:id", function(req, res){
 		}
 	})
 })
+//Show --Page for the individual childsup hymn
+app.get("/childrensup/:id", function(req, res){
+	ChildrenSupplement.findById(req.params.id).exec(function(err, selectedHymn){
+		if (err){
+			req.flash("error", "Something went wrong")
+			console.log(err.message);
+		}else {
+			res.render("showcs", {foundHymn: selectedHymn})
+		}
+	})
+})
 
 //Edit Route to Edit hymn content already in the DB.
 app.get("/the_church_hymnal/:id/edit", function(req, res){
 	TheChurchHymnal.findById(req.params.id, function(err, foundHymn){
 		if (err){
-			console.log(err)
+			console.log(err.message);
 		} else {
 			res.render("edit", {hymn: foundHymn});
+		}
+	})
+})
+//Edit route for childrensupplement
+app.get("/childrensup/:id/edit", function(req,res){
+	ChildrenSupplement.findById(req.params.id, function(err, foundHymn){
+		if (err){
+			console.log(err.message);
+		} else {
+			res.render("editcs", {hymn: foundHymn});
 		}
 	})
 })
@@ -143,14 +193,35 @@ app.put("/the_church_hymnal/:id", isLoggedIn, function(req, res){
 		}
 	})
 })
+//Update Route
+app.put("/childrensup/:id", isLoggedIn, function(req, res){
+	ChildrenSupplement.findByIdAndUpdate(req.params.id, req.body.hymn, function(err, updatedHymn){
+		if (err){
+			console.log(err.message)
+			res.redirect("/editcs");
+		} else {
+			res.redirect("/childrensup/" +req.params.id);
+		}
+	})
+})
 
 //Delete Route - Delete Hymn from DB
 app.delete("/the_church_hymnal/:id", isLoggedIn, function(req, res){
 	TheChurchHymnal.findByIdAndRemove(req.params.id, function(err){
 		if (err){
-			console.log(err)
+			console.log(err.message)
 		} else {
 			res.redirect("/the_church_hymnal")
+		}
+	})
+})
+//Delete
+app.delete("/childrensup/:id", isLoggedIn, function(req, res){
+	ChildrenSupplement.findByIdAndRemove(req.params.id, function(err){
+		if (err){
+			conole.log(err.message)
+		} else {
+			res.redirect("/childrensup")
 		}
 	})
 })

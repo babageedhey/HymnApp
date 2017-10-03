@@ -13,8 +13,15 @@
 					<a href="/"><span class="fa fa-home"></span> Home </a>
 					</li>
 					<li class="list-group-item active">
-					<a href="/the_church_hymnal"> The Church Hymnal</a> 
-					</li>
+					 <div class="dropdown">
+                  	<button class="btn btn-link dropdown-toggle cs" data-toggle="dropdown" aria-expanded="false"><span class="fa fa-list-ul"></span>
+                  	<a href="/the_church_hymnal"> The Church Hymnal</a>
+                  	</button>
+                  	<ul class="dropdown-menu">
+                    	<li><a href="/the_church_hymnal">Main Book</a></li>
+                    	<li class="active"><a href="/childrensup">Children Supplement</a></li>
+                  	</ul>
+                	</div></li>
 					<li class="list-group-item">
 					<a href="/baptist_hymnal"> Baptist Hymnal</a> 
 					</li>
@@ -41,44 +48,21 @@
 		<div class="col-md-6">
 			
 			<div class="thumbnail">
-			<fieldset>
-			<legend class="title-h"> Edit <%= hymn.title %> </legend><hr id="hr">
-				<form action="/the_church_hymnal/<%=hymn._id %>?_method=PUT" method="POST" role="form">
+				<a href="/childrensup"><span class="fa fa-arrow-left"></span> Back </a>
+				<h3 class="title-h"><%=foundHymn.title %></h3><hr id="hr">	
+							<img class="img-responsive score-img" src="<%=foundHymn.score %>" >
+						
+				<% if (currentUser && currentUser.username === "geedhey") { %>
 
-					<div class="inputReg form-group">
-						<label> Number: 
-							<input type="text" name="hymn[number]" value="<%= hymn.number %>" class="input-reg form-control">
-						</label>
-					</div>
-					<div class="inputReg form-group">
-						<label> Title: 
-							<input type="text" name="hymn[title]" value="<%= hymn.title %>" class="input-reg form-control">
-						</label>
-					</div>
-					<div class="inputReg form-group">
-						<label> Meter No: 
-							<input type="text" name="hymn[meter]" value="<%= hymn.meter %>" class="input-reg form-control">
-						</label>
-					</div>
-					<div class="inputReg form-group">
-						<label> Tune-Name: 
-							<input type="text" name="hymn[tune_name]" value="<%= hymn.tune_name %>" class="input-reg form-control">
-						</label>
-					</div>
-					<div class="inputReg form-group">
-						<label> Score: 
-							<input type="text" name="hymn[score]" value="<%= hymn.score %>" class="input-reg form-control">
-						</label>
-					</div>
-					<div class="inputReg form-group">
-						<label> Hymn Story: 
-							<textarea type="text" name="hymn[caption]" value="<%= hymn.caption %>" class="input-reg form-control" placeholder="<%= hymn.caption %>"></textarea>
-						</label>
-					</div>
+					<a href="/childrensup/<%=foundHymn._id %>/edit" class="btn btn-primary active" role="button">
+					 Edit Hymn 
+					</a>
+					<form  id="delete-btn" action="/childrensup/<%=foundHymn._id %>?_method=DELETE" method="POST">
+						<button class="btn btn-default btn-danger"> Delete </button>
+					</form>
 
-					<button type="submit" class="btn btn-primary"> Submit </button>
-				</form>
-			</fieldset>
+				<% } %>
+					
 			</div>
 		</div>
 
