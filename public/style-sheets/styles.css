@@ -111,6 +111,8 @@ thead th {
 
 tbody td:first-of-type {
     width:5%; /*Making the number-body column smaller than the other column*/
+    padding-left: 5px;
+    margin-left: 5px;
    
 }
 
@@ -118,7 +120,7 @@ tbody td {
 
     width:auto;
     text-align: center;
-  
+
        
 }
 
@@ -132,9 +134,13 @@ tbody {
 }
 td:first-child + td{
   width:55%;
+  padding-left: 3px;
+  margin-left: 3px;
 }
 td:first-child + td + td{
   width:20%;
+  padding-left: 0px;
+  margin-left: 0px;
 }
 .title {
   width:30%;
