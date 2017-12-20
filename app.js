@@ -9,6 +9,9 @@ var 			express 				= require("express"),
 				ChildrenSupplement		= require("./models/childsup"),
 				User					= require("./models/user"),
 				methodOverRide			= require("method-override"),
+
+				churchHymnalRoutes		= require("./routes/church_hymnal"),
+				authenticationRoutes	= require("./routes/authentication"),
 				
 				app 					= express();
 
@@ -24,6 +27,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(flash());
 app.use(methodOverRide("_method"));
 app.set("view engine", "ejs");
+
+app.use(churchHymnalRoutes);
+app.use(authenticationRoutes);
 
 console.log(process.env.DATABASEURL);
 
@@ -51,17 +57,7 @@ passport.use(new passportLocal(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//Function to verify user login
-function isLoggedIn(req, res, next){
-	if (req.isAuthenticated()){
-		return next();
-		
-	} else {
-		req.flash("error", "Username or Password Incorrect!");
-		res.redirect("/login");
-	}
-	
-}
+
 
 //Middlewear for login logic
 app.use(function(req, res, next){
@@ -71,199 +67,18 @@ app.use(function(req, res, next){
 	next();
 })
 
+
+
+
 // Index Route for Home page.
 app.get("/", function(req,res){
 	res.render("homepage", {currentUser: req.user});
 })
 
-//Index Route for The Church Hymnal Page
-app.get("/the_church_hymnal", function(req,res){
-	//Get all Hymn data from the DB
-	TheChurchHymnal.find({}, function(err, allHymns){
-		if (err) {
-			req.flash("error", "Oops!!!... Hymns not Found");
-			console.log(err.message);
-		} else {
-			res.render("the_church_hymnal", {hymnData: allHymns})
-		}
-	})
-})
-
-//Index Route for Children Supplement Hymn
-app.get("/childrensup", function(req,res){
-	//Get all hymns from the children supplement book
-	ChildrenSupplement.find({}, function(err, allHymns){
-		if (err) {
-			req.flash("error", "Oops!!!... Hymns not found");
-		}else {
-			res.render("childrensup", {hymnData: allHymns})
-		}
-	})
-})
-
-//New -- Route to add new hymn
-app.get("/the_church_hymnal/new",isLoggedIn, function(req, res){
-	res.render("new");
-})
-// New -- ROute to add new Hymns to the children supplement book
-app.get("/childrensup/new", isLoggedIn, function(req, res){
-	res.render("newcs");
-})
 
 
-//Create --Route to Submit new Hymn to DB
-app.post("/the_church_hymnal",isLoggedIn, function(req, res){
-	//create new Hymn
-TheChurchHymnal.create(req.body.hymn, function(err, newHymn){
-		if (err){
-			//render the form again
-			res.render("new");
-			console.log(err.message);
-		} else {
-			newHymn.save();
-			res.redirect("/the_church_hymnal");
-		}
-	})
-})
-//Create -- Route to Submit the new children supplement book to
-app.post("/childrensup", isLoggedIn, function(req, res){
-	ChildrenSupplement.create(req.body.hymn, function(err, newHymn){
-		if (err){
-			res.render("newcs");
-		} else {
-			newHymn.save();
-			res.redirect("/childrensup");
-		}
-	})
-})
-//SHOW --Page for the individual hymns
-app.get("/the_church_hymnal/:id", function(req, res){
 
-	TheChurchHymnal.findById(req.params.id).exec(function(err, selectedHymn){
-		if (err){
-			req.flash("error", "Oops!!!... Something went wrong.")
-			console.log(err.message);
-		} else {
-			console.log(selectedHymn);
-			res.render("show", {foundHymn: selectedHymn}) 
-		}
-	})
-})
-//Show --Page for the individual childsup hymn
-app.get("/childrensup/:id", function(req, res){
-	ChildrenSupplement.findById(req.params.id).exec(function(err, selectedHymn){
-		if (err){
-			req.flash("error", "Something went wrong")
-			console.log(err.message);
-		}else {
-			res.render("showcs", {foundHymn: selectedHymn})
-		}
-	})
-})
 
-//Edit Route to Edit hymn content already in the DB.
-app.get("/the_church_hymnal/:id/edit", function(req, res){
-	TheChurchHymnal.findById(req.params.id, function(err, foundHymn){
-		if (err){
-			console.log(err.message);
-		} else {
-			res.render("edit", {hymn: foundHymn});
-		}
-	})
-})
-//Edit route for childrensupplement
-app.get("/childrensup/:id/edit", function(req,res){
-	ChildrenSupplement.findById(req.params.id, function(err, foundHymn){
-		if (err){
-			console.log(err.message);
-		} else {
-			res.render("editcs", {hymn: foundHymn});
-		}
-	})
-})
-
-//Update Route - Update the Edited Hymn
-app.put("/the_church_hymnal/:id", isLoggedIn, function(req, res){
-	TheChurchHymnal.findByIdAndUpdate(req.params.id, req.body.hymn, function(err, updatedHymn){
-		if (err){
-			console.log(err)
-			res.redirect("/edit");
-		} else {
-			res.redirect("/the_church_hymnal/" +req.params.id); 
-		}
-	})
-})
-//Update Route
-app.put("/childrensup/:id", isLoggedIn, function(req, res){
-	ChildrenSupplement.findByIdAndUpdate(req.params.id, req.body.hymn, function(err, updatedHymn){
-		if (err){
-			console.log(err.message)
-			res.redirect("/editcs");
-		} else {
-			res.redirect("/childrensup/" +req.params.id);
-		}
-	})
-})
-
-//Delete Route - Delete Hymn from DB
-app.delete("/the_church_hymnal/:id", isLoggedIn, function(req, res){
-	TheChurchHymnal.findByIdAndRemove(req.params.id, function(err){
-		if (err){
-			console.log(err.message)
-		} else {
-			res.redirect("/the_church_hymnal")
-		}
-	})
-})
-//Delete
-app.delete("/childrensup/:id", isLoggedIn, function(req, res){
-	ChildrenSupplement.findByIdAndRemove(req.params.id, function(err){
-		if (err){
-			conole.log(err.message)
-		} else {
-			res.redirect("/childrensup")
-		}
-	})
-})
-
-//Show Register form
-app.get("/register", function(req, res){
-	res.render("register");
-})
-
-//handle register post
-app.post("/register", function(req, res){
-	var newUser = new User ({username: req.body.username});
-	
-	User.register(newUser, req.body.password, function(err, user){
-		if (err) {
-			console.log(err.message);
-			req.flash("error", err.message);
-			return res.redirect("register");
-		}
-		passport.authenticate("local")(req, res, function(){
-			req.flash("success", "Welcome " + user.username);
-			res.redirect("/");
-			
-		})
-	})
-})
-//Show Login Form
-app.get("/login", function(req, res){
-	res.render("login");
-})
-
-//Handles the login route
-app.post("/login", passport.authenticate("local", 
-	{successRedirect: "/", failureRedirect: "/login"}), function(req, res){
-	console.log(username);
-})
-
-//Logout Route
-app.get("/logout", function(req, res){
-	req.logout();
-	res.redirect("/");	
-})
 
 
 
