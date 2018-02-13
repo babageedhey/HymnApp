@@ -2,6 +2,11 @@
 
 <% include layouts/navbar %>
 <div class="container-fluid" id="content">
+	<div>
+		<p>
+			<h5>Search Result: <%= hymnData.length %> Hymns found </h5>
+		</p>
+	</div>
 	
 	<div class="row">
 		<div class="col-md-3">
@@ -47,7 +52,7 @@
 		<div class="col-md-6">
 			
 			<div class="thumbnail">
-			<h3 class="title-h"> The Church Hymnal </h3><hr id="hr">
+			<h3 class="title-h"> Found Hymns </h3><hr id="hr">
 			<% if (currentUser && currentUser.username === "geedhey") { %>
 					<a role="button" class="btn btn-primary active" id="add-btn" href="/the_church_hymnal/new">Add New Hymn</a>
 						
@@ -82,7 +87,8 @@
 								<strong style="font-family:Georgia;"><%= hymn.number %></strong>
 							</td>
 							<td  class="title">
-								<a href="/the_church_hymnal/<%=hymn._id %>" style="font-family:Georgia;"><%= hymn.title %></a>  
+								<a href="/the_church_hymnal/<%=hymn._id %>" style="font-family:Georgia;">
+								<%= hymn.title %></a>  
 							</td>
 							<td  class="meter">
 								<strong style="font-family:Georgia;"><%= hymn.meter %></strong>

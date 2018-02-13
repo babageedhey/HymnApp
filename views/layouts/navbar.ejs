@@ -13,13 +13,26 @@
       			</button>
       			<a class="navbar-brand brand" href="/">Everything Hymns</a>
 
+      				
 				</div>
 		
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			
-					<div class="date"><h5 id="date"> </h5></div>
+					<div class="date">
+						<h5 id="date"> </h5>
+					</div>
+					<div class="search-bar">
+						<form action="/search" method="GET" class="form-inline">
+      					<div class="form-group has-feedback" >
+      						<input type="text" name="search" placeholder="Search Hymn"/>
+      						<i class="fa fa-search fa-lg form-control-feedback" id="search-icon"></i>	
+      					</div>
+      					</form>
+      				</div>
+      			<div class="right-label">
 				<ul class="nav navbar-nav navbar-right"> 
 				<%	if (!currentUser) { %>
+						<li><a href="">  </a></li>
 						<li><a href="/login">Login <i class="fa fa-user-o"></i></a></li>
 						<li><a href="/register">Sign up <i class="fa fa-user-circle-o"></i></a></li>
 				<%	} else {  %>
@@ -30,6 +43,7 @@
 					<li><a href="/">Contact Us <i class="fa fa-phone"> </i></a></li>
 					<li><a href="/">About <i class="fa fa-info"> </i></a></li>
 				</ul>
+				</div>
 		</div>
 		</div>
 	</nav>

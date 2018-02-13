@@ -5,11 +5,13 @@ var 			express 				= require("express"),
 				passportLocal			= require("passport-local"),
 				flash					= require("connect-flash"),
 				seedDB					= require("./seed"),
+				allHymns 				= require("./models/combinedhymn"),
 				TheChurchHymnal 		= require("./models/hymns"),
 				ChildrenSupplement		= require("./models/childsup"),
 				User					= require("./models/user"),
 				methodOverRide			= require("method-override"),
 
+				allHymnsRoutes			= require("./routes/all_hymns"),
 				churchHymnalRoutes		= require("./routes/church_hymnal"),
 				authenticationRoutes	= require("./routes/authentication"),
 				
@@ -29,6 +31,7 @@ app.use(methodOverRide("_method"));
 app.set("view engine", "ejs");
 
 app.use(churchHymnalRoutes);
+app.use(allHymnsRoutes);
 app.use(authenticationRoutes);
 
 console.log(process.env.DATABASEURL);
@@ -39,9 +42,9 @@ console.log(process.env.DATABASEURL);
 mongoose.Promise = require("bluebird");
 mongoose.Promise = global.Promise;
 // Connection to the DB cloud
-mongoose.connect("mongodb://babageedhey:nextlevel01@ds036617.mlab.com:36617/hymndb", {useMongoClient: true});
+//mongoose.connect("mongodb://babageedhey:nextlevel01@ds036617.mlab.com:36617/hymndb", {useMongoClient: true});
 
-//mongoose.connect("mongodb://localhost/hymndb", {useMongoClient: true});
+mongoose.connect("mongodb://localhost/hymndb", {useMongoClient: true});
 
 
 

@@ -41,7 +41,38 @@ function isLoggedIn(req, res, next){
 	
 }
 
-//Index Route for The Church Hymnal Page
+//Function to filter the input search
+function escapeRegex(text){
+	return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
+
+//Search Route
+
+router.get("/search", function(req,res){
+	searchParam = req.query.search
+	
+		if (searchParam) {
+		const regex = new RegExp(escapeRegex(searchParam), "gi");
+		//Get the searched hymn from the DB
+		TheChurchHymnal.find({title: regex}, function(err, foundHymns){
+			if (err){
+				console.log(err);
+			} else {
+				if (!foundHymns.length == 0) {
+					res.render("search", {hymnData: foundHymns})
+				} else{
+					
+					res.render("search", {hymnData: foundHymns});
+					console.log("No hymn was found");
+				}
+				
+			}
+		})
+	}
+	
+})
+
+// Index Route for The Church Hymnal Page
 router.get("/the_church_hymnal", function(req,res){
 	//Get all Hymn data from the DB
 	TheChurchHymnal.find({}, function(err, allHymns){
