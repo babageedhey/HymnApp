@@ -10,6 +10,7 @@ var 			express 				= require("express"),
 				ChildrenSupplement		= require("./models/childsup"),
 				User					= require("./models/user"),
 				methodOverRide			= require("method-override"),
+				keys					= require("./config/keys"),
 
 				allHymnsRoutes			= require("./routes/all_hymns"),
 				churchHymnalRoutes		= require("./routes/church_hymnal"),
@@ -38,19 +39,19 @@ console.log(process.env.DATABASEURL);
 
 
 
-//Connection to DB Locally
+//Mongo Global Promise
 mongoose.Promise = require("bluebird");
 mongoose.Promise = global.Promise;
-// Connection to the DB cloud
-mongoose.connect("mongodb://babageedhey:nextlevel01@ds036617.mlab.com:36617/hymndb", {useMongoClient: true});
-
-//mongoose.connect("mongodb://localhost/hymndb", {useMongoClient: true});
-
-
+// Connection of DB
+mongoose.connect(keys.mongoURI, {})
+	.then(function(){
+		console.log("MongoDB Connected");
+	})
+	.catch(err => console.log(err));
 
 //Passport Configuration
 app.use(require("express-session")({
-	secret: "This is gonna be so successful.",
+	secret: "secret",
 	resave: false,
 	saveUninitialized: false
 }));
@@ -78,7 +79,10 @@ app.get("/", function(req,res){
 	res.render("homepage", {currentUser: req.user});
 })
 
-
+//Contact Us ROute
+app.get("/contact", function(req, res){
+	res.render('contact', {currentUser: req.user });
+})
 
 
 
